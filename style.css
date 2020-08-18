@@ -53,3 +53,8 @@ p {
     letter-spacing: 1px;
 }
 
+.lyrics {
+    font-size: 20px !important;
+    color: #ddd !important
+}
+
