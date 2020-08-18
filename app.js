@@ -3,6 +3,7 @@ const searchBox = document.querySelector('#search_box');
 const searchBtn = document.querySelector('#search_btn');
 
 
+
 searchBtn.addEventListener('click', function () {
   // ===API FETCH FOR LYRICS INFO===
   fetch(`https://api.lyrics.ovh/suggest/${searchBox.value}`)
@@ -28,15 +29,30 @@ searchBtn.addEventListener('click', function () {
             <p class="lead artist"> <span class="font">Artist Name :</span> <span class="artist_name font-italic">${artistName}</span> </p>
         </div>
         <div class=" col-4 col-md-3 text-md-right text-center">
-            <button class="btn btn-success get_lyrics" onclick="getLyrics('${lyricsTitle}','${artistName}')">Get Lyrics</button>
+            <button class="btn btn-success get_lyrics" onclick="getLyrics('${lyricsTitle}','${artistName}'); hide()">Get Lyrics</button>
         </div>
     </div>`     
         
+   
         
       }
       
     })
+  
+    const ShowArea = document.querySelector('.search-result');
+  ShowArea.style.display = 'block';
+  
+  const btn = document.querySelector('.single-lyrics').style.display = 'none'
 })
+
+// hide result area
+function hide() {
+  const hideArea = document.querySelector('.search-result');
+  hideArea.style.display = 'none'
+   
+}
+
+
 
 
 // === LYRICS GENERATOR FUNCTION===
@@ -50,13 +66,17 @@ function getLyrics(title, artist) {
           let singleLyrics = document.querySelector('.single-lyrics')
           singleLyrics.innerHTML = '';
           singleLyrics.innerHTML += `<h2 class="text-success mb-4 font-weight-bold">${title} - ${artist}</h2>
-        <pre class="lyrics text-white"> ${songLyrics}</pre>`
+        <pre class="lyrics text-light"> ${songLyrics}</pre>`
+          
+          document.querySelector('.single-lyrics').style.display = 'block'
+          
         } else {
           alert('No Lyrics Available')
         }
-
         
       });
+  
+      
 }
 
 // =============The End=================
