@@ -46,8 +46,7 @@ p {
 
 
 
-.font {
-    /* font-style: italic; */
+.font { 
     font-weight: bold;
     font-family: sans-serif;
     letter-spacing: 1px;
